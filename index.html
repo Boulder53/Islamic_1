@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة نلتقي لنرتقي التعليمية</title>
+    <!-- خطوط جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-kaaba"></i>
+            نلتقي لنرتقي
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showHome()">الرئيسية</a></li>
+                <li><a href="#courses">الدورات</a></li>
+                <li><a href="#">عن المنصة</a></li>
+                <li><a href="#">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- واجهة الصفحة الرئيسية -->
+    <div id="home-content">
+        <section class="hero">
+            <h1>طريقك لتعلم العلوم الشرعية</h1>
+            <h2>مع الشيخ سيد الجندي</h2>
+            <p>منصة تعليمية متخصصة في الفقه، الحديث، التفسير والعقيدة</p>
+        </section>
+
+        <div class="container" id="courses">
+            <h2 class="section-title">الدورات المتاحة</h2>
+            <div class="courses-grid" id="courses-list">
+                <!-- سيتم توليد الكورسات بواسطة JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- واجهة مشغل الدروس -->
+    <div id="player-section" class="container">
+        <button class="back-btn" onclick="showHome()">
+            <i class="fas fa-arrow-right"></i> العودة للرئيسية
+        </button>
+        
+        <div class="player-container">
+            <div class="video-area">
+                <div class="main-player" id="media-holder">
+                    <!-- سيتم وضع الفيديو أو الصوت هنا -->
+                    <p style="color: white;">اختر درساً للبدء</p>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h2 id="current-lesson-title">اسم الدرس</h2>
+                    <p id="current-lesson-desc" style="color: #666;">وصف تفصيلي للدرس والمحتوى العلمي.</p>
+                </div>
+            </div>
+
+            <div class="playlist">
+                <h3>قائمة الدروس</h3>
+                <div id="lessons-list" style="margin-top: 15px;">
+                    <!-- سيتم توليد قائمة الدروس هنا -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 منصة نلتقي لنرتقي</p>
+    </footer>
+
+    <script>
+        // بيانات الكورسات والدروس (يمكنك إضافة المزيد هنا)
+        const coursesData = [
+            {
+                id: 1,
+                title: "مجلس مدارسة كتاب الوجيز في فقه السنه والكتاب العزيز",
+                image: "p1.jpeg",
+                description: "يحتوي هذا المجلس لشرح مفصل لكتاب الوجيز الذي يحتوي علي مجموعة من الكتب وهي الطهارة و الصلاة و الصيام و الزكاة و الحج و النكاح و البيوع و الايمان و الاطعمة و الوصايا و الفرائض و الحدود و الجنايات و القضاء و الجهاد و العتق ",
+                lessons: [
+                    { title: "اللقاء الاول (مقدمة كتاب الوجيز)", type: "video", url: "https://www.w3schools.com/html/mov_bbb.mp4", desc: "شرح مقدمة الكتاب" },
+                    { title: "اللقاء الثاني", type: "audio", url: "audio5.mp3", desc: "اللقاء يغطي شرح الاتي {باب الماء , باب النجاسات , }" },
+                    { title: "اللقاء الثالث", type: "video", url: "https://www.w3schools.com/html/movie.mp4", desc: "تطبيق عملي لكيفية الصلاة الصحيحة." }
+                ]
+            },
+            {
+                id: 2,
+                title: "سيرة الحبيب ﷺ",
+                image: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                description: "محطات من حياة النبي محمد صلى الله عليه وسلم من الولادة حتى الوفاة.",
+                lessons: [
+                    { title: "عام الفيل والميلاد", type: "video", url: "https://www.w3schools.com/html/mov_bbb.mp4", desc: "أحداث ما قبل البعثة." },
+                    { title: "الهجرة النبوية - صوتي", type: "audio", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", desc: "قصة الهجرة إلى المدينة المنورة." }
+                ]
+            },
+            {
+                id: 3,
+                title: "تفسير جزء عم",
+                image: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                description: "تدبر وفهم معاني قصار السور للناشئة والكبار.",
+                lessons: [
+                    { title: "تفسير سورة النبأ", type: "video", url: "https://www.w3schools.com/html/movie.mp4", desc: "شرح الآيات الكريمة ومعانيها." }
+                ]
+            }
+        ];
+
+        // وظيفة لعرض الكورسات في الصفحة الرئيسية
+        function renderCourses() {
+            const grid = document.getElementById('courses-list');
+            grid.innerHTML = coursesData.map(course => `
+                <div class="course-card" onclick="openCourse(${course.id})">
+                    <img src="${course.image}" class="course-img" alt="${course.title}">
+                    <div class="course-info">
+                        <h3>${course.title}</h3>
+                        <p>${course.description}</p>
+                        <div style="margin-top:15px; color: var(--secondary-color); font-weight: bold;">
+                            <i class="fas fa-book-open"></i> ${course.lessons.length} دروس
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // الانتقال لصفحة الكورس
+        function openCourse(courseId) {
+            const course = coursesData.find(c => c.id === courseId);
+            document.getElementById('home-content').style.display = 'none';
+            document.getElementById('player-section').style.display = 'block';
+            window.scrollTo(0, 0);
+
+            renderPlaylist(course);
+        }
+
+        // عرض قائمة الدروس
+        function renderPlaylist(course) {
+            const listContainer = document.getElementById('lessons-list');
+            listContainer.innerHTML = course.lessons.map((lesson, index) => `
+                <div class="playlist-item" onclick="playLesson('${lesson.url}', '${lesson.type}', '${lesson.title}', '${lesson.desc}', this)">
+                    <i class="fas ${lesson.type === 'video' ? 'fa-play-circle' : 'fa-volume-up'}"></i>
+                    <div>
+                        <div style="font-weight: bold;">${lesson.title}</div>
+                        <small>${lesson.type === 'video' ? 'فيديو' : 'مقطع صوتي'}</small>
+                    </div>
+                </div>
+            `).join('');
+
+            // تشغيل أول درس تلقائياً
+            const firstLesson = course.lessons[0];
+            playLesson(firstLesson.url, firstLesson.type, firstLesson.title, firstLesson.desc, document.querySelector('.playlist-item'));
+        }
+
+        // تشغيل الدرس في المشغل
+        function playLesson(url, type, title, desc, element) {
+            const holder = document.getElementById('media-holder');
+            document.getElementById('current-lesson-title').innerText = title;
+            document.getElementById('current-lesson-desc').innerText = desc;
+
+            // تحديث الشكل النشط في القائمة
+            document.querySelectorAll('.playlist-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            if (type === 'video') {
+                holder.innerHTML = `<video controls autoplay><source src="${url}" type="video/mp4">متصفحك لا يدعم الفيديو</video>`;
+            } else {
+                holder.innerHTML = `
+                    <div style="text-align:center; width: 100%; padding: 20px;">
+                        <i class="fas fa-microphone-alt" style="font-size: 5rem; color: var(--secondary-color); margin-bottom: 20px;"></i>
+                        <audio controls autoplay style="width: 80%;"><source src="${url}" type="audio/mpeg">متصفحك لا يدعم الصوت</audio>
+                    </div>`;
+            }
+        }
+
+        // العودة للرئيسية
+        function showHome() {
+            document.getElementById('home-content').style.display = 'block';
+            document.getElementById('player-section').style.display = 'none';
+            document.getElementById('media-holder').innerHTML = ''; // إيقاف التشغيل
+        }
+
+        // تشغيل الدالة عند تحميل الصفحة
+        window.onload = renderCourses;
+    </script>
+</body>
+</html>
